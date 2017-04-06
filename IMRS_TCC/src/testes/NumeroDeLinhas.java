@@ -1,5 +1,5 @@
 package testes;
 
-public class NumeroDeLinhas {
+public class NumeroDeLinhas implements ASTVisitor{
 
 }
