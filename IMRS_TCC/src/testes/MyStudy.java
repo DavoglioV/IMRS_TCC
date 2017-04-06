@@ -13,10 +13,10 @@ public class MyStudy implements Study {
 		new MetricMiner2().start(new MyStudy());
 	}
 
-	@Override
 	public void execute() {
-		new RepositoryMining().in(GitRepository.singleProject("C:/Users/Vanny/git/repodriller"))
-				.through(Commits.all())
+		new RepositoryMining()
+				.in(GitRepository.singleProject("C:/Users/Vanny/git/repodriller"))
+				.through(Commits.onlyInHead())
 				.process(new DevelopersVisitor(), new CSVFile("C:/Users/Vanny/git/IMRS_TCC/IMRS_TCC/src/files/fileTeste.csv"))
 				.mine();
 
