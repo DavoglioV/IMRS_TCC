@@ -1,0 +1,235 @@
+<?xml version="1.0" standalone="yes"?>
+
+<templates>
+<template kind="1" name="Type.Factory" default="false" signature="false">
+    <regex>(.+)Factory</regex>
+    <example>MessageFactory</example>
+    <text>/**
+ * A factory for creating ${e.g(1)} objects.
+ */</text>
+    <template kind="3" name="Type.Factory.Method.create" default="false" signature="false">
+            <regex>create(.+)</regex>
+            <example>createMessage</example>
+            <text>/**
+ * Creates a new ${e.p().g(1)} object.
+ */</text>
+    </template>
+</template>
+<template kind="1" name="Type.Observer" default="false" signature="false">
+    <regex>(.+)Observer</regex>
+    <example>ImageObserver</example>
+    <text>/**
+ * An asynchronous update interface for receiving notifications
+ * about ${e.g(1)} information as the ${e.g(1)} is constructed.
+ */</text>
+    <template kind="3" name="Type.Observer.Method.update" default="false" signature="false">
+            <regex>.*</regex>
+            <example>imageUpdate</example>
+            <text>/**
+ * This method is called when information about an ${e.p().g(1)}
+ * which was previously requested using an asynchronous
+ * interface becomes available.
+ */</text>
+    </template>
+</template>
+<template kind="1" name="Type.Listener" default="false" signature="false">
+    <regex>(.+)Listener</regex>
+    <example>AutodocListener</example>
+    <text>/**
+ * The listener interface for receiving ${e.g(1).fl()} events.
+ * The class that is interested in processing a ${e.g(1).fl()}
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's &lt;code&gt;add${e.g(1)}Listener&lt;code&gt; method. When
+ * the ${e.g(1).fl()} event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see ${e.g(1)}Event
+ */</text>
+    <template kind="3" name="Type.Listener.Method.created" default="false" signature="false">
+            <regex>(.*)Created</regex>
+            <example>autodocCreated</example>
+            <text>/**
+ * Invoked when ${e.g(1).rs()} is created.
+ */</text>
+    </template>
+    <template kind="3" name="Type.Listener.Method.updated" default="false" signature="false">
+            <regex>(.*)Updated</regex>
+            <example>autodocUpdated</example>
+            <text>/**
+ * Invoked when ${e.g(1).rs()} update occurs.
+ */</text>
+    </template>
+</template>
+<template kind="1" name="Type.Default" default="true" signature="false">
+    <regex>.+</regex>
+    <example>ExampleType</example>
+    <text>
+/**
+ * Capgemini
+ * @author ${user}
+ * @date ${date}-${time}
+ * @version 1.0
+ * @see 
+ */</text>
+</template>
+<template kind="2" name="Field.fPrefix" default="false" signature="false">
+    <regex>f([A-Z].+)</regex>
+    <example>fExampleMember</example>
+    <text>/**
+ * Atributo ${e.g(1).rsfl()}.
+ */</text>
+</template>
+<template kind="2" name="Field.thePrefix" default="false" signature="false">
+    <regex>the[A-Z].+</regex>
+    <example>theNumberOfQuestions</example>
+    <text>/**
+ * ${e.rsfu()}.
+ */</text>
+</template>
+<template kind="2" name="Field.Default" default="true" signature="false">
+    <regex>.+</regex>
+    <example>numberOfQuestions</example>
+    <text>/**
+#if(${e.isStatic()} &amp;&amp; ${e.isFinal()})
+ * Constante ${e}
+#else
+ * Atributo ${e.rs()}
+#end
+ */</text>
+</template>
+<template kind="3" name="Method.getInstance" default="false" signature="false">
+    <regex>getInstance</regex>
+    <example>getInstance</example>
+    <text>/**
+ * Obt&#233;m um inst&#226;ncia &#250;nica atrav&#233;s do m&#233;todo ${e.getDeclaringType()}.
+ * 
+ * @return Retorna a instancia atrav&#233;s do m&#233;todo ${e.getDeclaringType()}
+ */</text>
+</template>
+<template kind="3" name="Method.Getter" default="false" signature="true">
+    <regex>\S+ get(\S+)\(.*\)</regex>
+    <example>int getNumberOfQuestions()</example>
+    <text>/**
+ * Nome: get${e.g(1)}
+ * Prop&#243;sito: Recupera o valor do atributo '${e.g(1).fl()}'
+ * @see 
+ * @return valor do atributo '${e.g(1).fl()}'
+ */</text>
+</template>
+<template kind="3" name="Method.Setter" default="false" signature="true">
+    <regex>void set(\S+)\([^,]+ ([^,]+)\)</regex>
+    <example>void setNumberOfQuestions(int number)</example>
+    <text>/**
+ * Nome: set${e.g(1)}
+ * Prop&#243;sito: Registra o valor do atributo '${e.g(1).fl()}'
+ * @see 
+ * @param ${e.g(2)} valor do atributo ${e.g(1).rsfl()}
+ */</text>
+</template>
+<template kind="3" name="Method.boolean Getter" default="false" signature="true">
+    <regex>boolean is(.+)\(.*\)</regex>
+    <example>boolean isBlue()</example>
+    <text>/**
+ * Nome: is${e.g(1)}
+ * Prop&#243;sito: Verifica se &#233; ${e.g(1).rsfl()}.
+ * @see
+ * @return true, se for ${e.g(1).rsfl()} sen&#227;o retorna false
+ */</text>
+</template>
+<template kind="3" name="Method.Main-Method" default="false" signature="true">
+    <regex>void main\(String\[\] (\S+)\)</regex>
+    <example>void main(String[] args)</example>
+    <text>/**
+ * M&#233;todo principal.
+ * @param ${e.g(1)}
+ */</text>
+</template>
+<template kind="3" name="Method.Constructor" default="false" signature="true">
+    <regex>(\S+)\(.*\)</regex>
+    <example>SimpleClass()</example>
+    <text>/**
+ * Construtor Padr&#227;o
+ * Prop&#243;sito: Instancia um novo objeto ${e.g(1)}
+ */</text>
+</template>
+<template kind="3" name="Method.Returns void" default="false" signature="true">
+    <regex>void (.+)\(.*\)</regex>
+    <example>void doSomething()</example>
+    <text>/**
+ * Nome: ${e.g(1)}
+ * Prop&#243;sito: ${e.g(1).rsfu()}.
+ * @see
+ * @exception
+ * @param
+ */</text>
+</template>
+<template kind="3" name="Method.Returns boolean" default="false" signature="true">
+    <regex>boolean (\S+)\(.*\)</regex>
+    <example>boolean doSomething(int parameter)</example>
+    <text>/**
+ * Nome: ${e.g(1)}
+ * Prop&#243;sito: ${e.g(1).rsfu()}.
+ * @see
+ * @param 
+ * @return true, se sucesso, sen&#227;o false
+ */</text>
+</template>
+<template kind="3" name="Method.Returns other" default="false" signature="true">
+    <regex>(\S+) (\S+)\(.*\)</regex>
+    <example>ReturnValue calculateSomething()</example>
+    <text>/**
+ * Nome: ${e.g(2)}
+ * Prop&#243;sito: ${e.g(2).rsfu()}.
+ * @see
+ * @exception
+ * @param 
+ * @return ${e.g(1).rsfl()}
+ */</text>
+</template>
+<template kind="3" name="Method.Default" default="true" signature="true">
+    <regex>.+</regex>
+    <example>doSomething</example>
+    <text>/**
+ * Nome: ${e} 
+ * Prop&#243;sito: ${e.rsfu()}.
+ * @see
+ */</text>
+</template>
+<template kind="4" name="Parameter.compUnit" default="false" signature="false">
+    <regex>compUnit</regex>
+    <example>compUnit</example>
+    <text>/**
+ * @param ${e}
+ */</text>
+</template>
+<template kind="4" name="Parameter.pPrefix" default="false" signature="false">
+    <regex>p([A-Z].+)</regex>
+    <example>pField</example>
+    <text>/**
+ * @param ${e}
+ */</text>
+</template>
+<template kind="4" name="Parameter.Default" default="true" signature="false">
+    <regex>.+</regex>
+    <example>simpleParameter</example>
+    <text>/**
+ * @param ${e}
+ */</text>
+</template>
+<template kind="5" name="Exception.IOException" default="false" signature="false">
+    <regex>IOException</regex>
+    <example>IOException</example>
+    <text>/**
+ * @throws Ocorreu um ${e}.
+ */</text>
+</template>
+<template kind="5" name="Exception.Default" default="true" signature="false">
+    <regex>.+</regex>
+    <example>ExampleException</example>
+    <text>/**
+ * @throws uma exce&#231;&#227;o ${e.sfl()} foi lan&#231;ada em tempo de execu&#231;&#227;o.
+ */</text>
+</template>
+</templates>
+

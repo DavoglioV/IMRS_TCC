@@ -1,0 +1,10 @@
+/**
+ * Nome: ${package_name}.${file_name}<BR/>
+ * Propósito: Classe ${project_name}<BR/>
+ * 
+ * Compilador: 1.6<BR/>
+ * Data da Criação: ${date}-${time}<BR/>
+ * Registro de Manutenção: ${date}<BR/>
+ * 
+ * - Autor: ${user} <BR/>
+ */
